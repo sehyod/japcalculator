@@ -94,7 +94,7 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
               {result} Kcal
             </Button>
             <Button variant="contained" onClick={handleReset}>
-              Remettre à zéro
+              {`Remettre à zéro: ${a.h}`}
             </Button>
           </div>
           <div className={classes.buttonContainer}>
