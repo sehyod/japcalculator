@@ -12,6 +12,20 @@ exports.handler = async function (event, context) {
   const todoItem = {
     data: data,
   };
+  await client.query(q.Create(q.Ref("classes"), { name: "todos" }))
+    .then(()=>{
+      return client.query(
+        q.Create(q.Ref("indexes"), {
+          name: "all_todos",
+          source: q.Ref("classes/todos")
+        }))
+    }).catch((e) => {
+      // Database already exists
+      if (e.requestResult.statusCode === 400 && e.message === 'instance not unique') {
+        console.log('DB already exists')
+        throw e
+      }
+    })
   /* construct the fauna query */
   return client
     .query(q.Create(q.Ref("classes/todos"), todoItem))
