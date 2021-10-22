@@ -3,7 +3,7 @@ const faunadb = require("faunadb"); /* Import faunaDB sdk */
 /* configure faunaDB Client with our secret */
 const q = faunadb.query;
 const client = new faunadb.Client({
-  secret: process.env.FAUNADB_SERVER_SECRET,
+  secret: "fnAEWI1BxhAAQzaa8AVTtcMvw4TVoR3HNP3RlKHZ",
 });
 
 exports.handler = async function (event, context) {
