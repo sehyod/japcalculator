@@ -1,9 +1,4 @@
-exports.handler = async function(event, context) {
-  const requestBody = JSON.parse(event.body);
-  const message = requestBody.message;
-
-  console.log(event);
-
+exports.handler = async function(event) {
   if (event.httpMethod === "OPTIONS") {
     const headers = {
       "Access-Control-Allow-Origin": "*",
@@ -16,6 +11,9 @@ exports.handler = async function(event, context) {
       body: "This was a preflight call!",
     };
   }
+
+  const requestBody = JSON.parse(event.body || "{}");
+  const message = requestBody.message;
 
   if (message) {
     return {
