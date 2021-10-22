@@ -88,7 +88,7 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
             </div>
           </div>
           <div className={classes.buttonContainer}>
-            <Button variant="contained" onClick={sendData(result)} style={{ marginRight: 10 }}>
+            <Button variant="contained" onClick={() => sendData(result)} style={{ marginRight: 10 }}>
               {result} Kcal
             </Button>
             <Button variant="contained" onClick={handleReset}>
